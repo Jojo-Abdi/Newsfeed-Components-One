@@ -84,7 +84,7 @@ const data = [
       <h2>{title of the article}</h2>
       <p class="date">{date of the article}</p>
   
-      {article content goes here}
+      {article content goes here }
   
       <span class="expandButton">+</span>
     </div>
@@ -102,3 +102,55 @@ const data = [
   */
   
 
+function articleMaker(title, date, content){
+
+  //create the elecments
+
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const articleContent = document.createElement("p"); 
+  const expandButton = document.createElement("span");
+
+  
+
+
+  // append everthing to article data
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleContent);
+  article.appendChild(expandButton);
+
+//add content 
+
+articleTitle.textContent = title;
+articleDate.textContent = date;
+articleContent.textContent = content;
+expandButton.textContent = "+";
+
+
+  // add classes and event listener
+
+  article.classList.add("article");
+  articleTitle.classList.add("article", "h2");
+  articleDate.classList.add("article", "date");
+  expandButton.classList.add("expandButton");
+
+  expandButton.addEventListener("click", function(event){
+    expandButton.classList.toggle("article", "close");
+    expandButton.classList.toggle("article-open ");
+  });
+  return article;
+}
+
+const articles = document.querySelector(".articles")
+data.map(function(item){
+  articles.appendChild(articleMaker(item.title, item.date, item.content))
+});
+
+
+/* const accordion = document.querySelector(".accordion")
+
+panelData.map(function(item) {
+  accordion.appendChild(createPanel(item.title, item.content)) */
