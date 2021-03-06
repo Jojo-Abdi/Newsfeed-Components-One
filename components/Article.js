@@ -133,13 +133,11 @@ expandButton.textContent = "+";
   // add classes and event listener
 
   article.classList.add("article");
-  articleTitle.classList.add("article", "h2");
-  articleDate.classList.add("article", "date");
+  articleDate.classList.add("date");
   expandButton.classList.add("expandButton");
 
   expandButton.addEventListener("click", function(event){
-    expandButton.classList.toggle("article", "close");
-    expandButton.classList.toggle("article-open ");
+    article.classList.toggle("article-open");
   });
   return article;
 }
